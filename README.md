@@ -1,16 +1,17 @@
 # STM32_HAL_CRC
 
-I've implemented test code to check flash integrity with CRC checksum
-It could be simple with IAR workbench as it supports CRC checksum.
-But it could be tricky with Truestudio as it doesn't support CRC checksum.
-I used SRecord(http://srecord.sourceforge.net/) to add CRC checksum to the binary file.
-
-Tutorial: https://blog.naver.com/eziya76/221507312819 (Written in Korean)
-
+I've implemented test code to check flash integrity with CRC checksum<br>
+It's simple with IAR workbench as it supports CRC checksum feature at Linker menu.<br>
+But it could be tricky with Truestudio as it doesn't support CRC checksum.<br>
+So. I used SRecord(http://srecord.sourceforge.net/) to add CRC checksum to the binary file.<br>
+<br>
+Tutorial: https://blog.naver.com/eziya76/221507312819 (Written in Korean)<br>
+<br>
 [Checkpoint]
 1) Build project and output format is binary
 <br>![pic1](./pic1.png)<br>
-2) SRecord will calculate CRC from 0x8000000 to 0x8008FFB and place checksum at 0x8008FFC
+2) SRecord will calculate CRC from 0x8000000 to 0x8008FFB and place checksum at 0x8008FFC<br>
+Input file: STM32F4_HAL_CRC.bin, Output file with CRC: STM32F4_HAL_CRC_X.bin<br>
 ```
 c:\SREC\srec_cat.exe STM32F4_HAL_CRC.bin -binary 
 -crop 0x0000 0x8FFC -fill 0xFF 0x0000 0x8FFC
